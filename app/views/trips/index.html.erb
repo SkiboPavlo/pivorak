@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>City from</th>
+      <th>City to</th>
+      <th>Date and time when go</th>
+      <th>Date and time when arrived</th>
+      <th>Tickets count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td><%= trip.city_from %></td>
+        <td><%= trip.city_to %></td>
+        <td><%= trip.date_when_go %></td>
+        <td><%= trip.date_when_arrived %></td>
+        <td><%= trip.tickets_count %></td>
+        <td><%= link_to 'Show', trip %></td>
+        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trip', new_trip_path %>
