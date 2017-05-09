@@ -1,14 +1,36 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Pivorak</title>
-    <%= csrf_meta_tags %>
+<%= csrf_meta_tags %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Pivorak</a>
+    </div>
+      <ul class="nav pull-right">
+        <li>
+          <div id="user_nav">
+            <% if user_signed_in? %>
+            Signed in as <%= current_user.email %>
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'btn btn-default btn-mini' %>
+            <% else %>
+            <%= link_to new_user_registration_path do %>
+            <button class="btn-mini btn btn-info">Sign Up</button>
+            <% end %>
+            or <%= link_to new_user_session_path do %>
+            <button class="btn btn-info btn-mini">Sign In</button>
+            <% end %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<body>
+  <%= yield %>
+</body>
