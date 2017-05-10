@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>City from:</strong>
@@ -25,9 +24,9 @@
   <%= @trip.tickets_count %>
 </p>
 
-<label class="checkbox-inline"><input type="checkbox" value="">1</label>
-<label class="checkbox-inline"><input type="checkbox" value="">2</label>
-
+<% @trip.tickets_count.to_i.times do |i| %>
+  <label class="checkbox-inline"><input type="checkbox" value=""><%= i + 1 %></label>
+<% end %>
 
 
 <div class="btn-toolbar" role="toolbar">

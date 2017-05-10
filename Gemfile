@@ -13,6 +13,13 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'devise'
+gem 'cancancan'
+gem 'rolify'
+gem 'bootstrap-sass'
+gem "select2-rails" #for select cities
+gem 'bootstrap-datepicker-rails' #for choosing dates
 
 group :production do
   gem 'pg'
@@ -29,9 +36,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'devise'
-gem 'cancancan'
-gem 'rolify'
-gem 'bootstrap-sass'
