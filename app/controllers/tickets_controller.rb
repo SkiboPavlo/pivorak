@@ -7,8 +7,8 @@ class TicketsController < ApplicationController
   end
 
   def new
-    trip = Trip.find params[:trip_id]
-    @ticket = trip.ticket.build
+    @trip = Trip.find params[:trip_id]
+    @ticket = @trip.tickets.build
   end
 
   def edit
@@ -20,15 +20,21 @@ class TicketsController < ApplicationController
   def create
     trip = Trip.find params[:trip_id]
     @ticket = trip.tickets.build(ticket_params)
-    if @ticket.save
-      redirect_to trip_tickets_path
-    else
-      flash[:errors] = @ticket.errors.messages
-      render :new
+    @ticket.created_at = Time.zone.now if buying?
+
+    respond_to do |format|
+      if @ticket.save
+        format.html {redirect_to trip_ticket_path(@ticket.trip, @ticket), notice: "Ticket was successfully created"}
+        format.json {render :show, status: :created, location: @ticket}
+      else
+        format.html {render :new}
+        format.json {render json: @ticket.errors, status: :unprocessable_entity}
+      end
     end
   end
 
   def update
+    @ticket.created_at = Time.zone.now if buying?
     if @ticket.update_attributes(ticket_params)
       redirect_to trip_tickets_path(@ticket.trip)
     else
@@ -51,5 +57,13 @@ class TicketsController < ApplicationController
 
   def ticket_params
     params.require(:ticket).permit(:number, :trip_id)
+  end
+
+  def buying?
+    params[:commit] == 'Buy'
+  end
+
+  def reserved?
+    params[:commit] == 'Reserve'
   end
 end

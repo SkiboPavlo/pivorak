@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510212152) do
+ActiveRecord::Schema.define(version: 20170514211636) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(version: 20170510212152) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "trip_id"
-    t.integer "number"
+    t.integer  "trip_id"
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "update_at"
     t.index ["trip_id"], name: "index_tickets_on_trip_id"
   end
 

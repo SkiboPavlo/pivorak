@@ -1,0 +1,12 @@
+<%= form_for [@ticket.trip, @ticket] do |f| %>
+  <div class="form-group">
+    <%= f.label :number %>
+    <%= f.text_field :number, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Buy", class: "btn btn-primary" %>
+    <%= f.submit "Reserve", class: "btn btn-dafault" %>
+  </div>
+<% end %>
+<%= link_to 'Back', :back, class: 'btn btn-default btn-sm' %>
