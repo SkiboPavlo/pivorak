@@ -20,6 +20,10 @@ gem 'rolify'
 gem 'bootstrap-sass'
 gem "select2-rails" #for select cities
 gem 'bootstrap-datepicker-rails' #for choosing dates
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'fb_graph'
 
 group :production do
   gem 'pg'

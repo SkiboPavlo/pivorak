@@ -13,22 +13,20 @@
             <a class="navbar-brand" href= "<%= root_url %>">Pivorak</a>
           </div>
             <ul class="nav pull-right">
-              <li>
-                <div id="user_nav">
-                  <% if user_signed_in? %>
-                  Signed in as <%= current_user.email %>
-                  <%= link_to "Profile", user_path(current_user), class: 'btn btn-default btn-sm' %>
-                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete,
-                                                                  class: 'btn btn-default btn-sm' %>
-                  <% else %>
-                  <%= link_to new_user_registration_path do %>
-                  <button class="btn btn-info btn-sm">Sign Up</button>
-                  <% end %>
-                  or <%= link_to new_user_session_path do %>
-                  <button class="btn btn-info btn-sm">Sign In</button>
-                  <% end %>
-                  <% end %>
-                </div>
+                <% if user_signed_in? %>
+                  <li>Signed in as <%= current_user.email %></li>
+                  <li><%= link_to "Profile", user_path(current_user), class: 'btn btn-default btn-sm' %></li>
+                  <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete,
+                                                                class: 'btn btn-default btn-sm' %></li>
+                <% else %>
+                  <li><%= link_to new_user_registration_path do %>
+                    <button class="btn btn-info btn-sm">Sign Up</button>
+                  <% end %></li>
+                  or
+                  <li><%= link_to new_user_session_path do %>
+                    <button class="btn btn-info btn-sm">Sign In</button>
+                  <% end %></li>
+                <% end %>
               </li>
             </ul>
         </div>
