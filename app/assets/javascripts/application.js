@@ -17,3 +17,9 @@
 //= require select2
 //= require bootstrap-datepicker
 
+$(document).ready(function() {
+  $("#city_from").select2();
+  $("#city_to").select2();
+  $('.datepicker').datepicker();
+});
+

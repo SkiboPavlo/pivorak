@@ -2,9 +2,11 @@
   <div class="row">
     <div class="col-md-9">
       <h2>Trips</h2>
-      <%= link_to 'New Trip', new_trip_path, class: 'btn btn-primary btn-sm' %>
+      <% if current_user.role == "admin" %>
+        <%= link_to 'New Trip', new_trip_path, class: 'btn btn-primary btn-sm' %>
       <br>
       <br>
+      <% end %>
 
       <form class="form-horizontal">
         <div class="input-group">
@@ -25,17 +27,24 @@
         </div>
       </form>
 
+      <%= form_tag trips_path, method: 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", name: nil %>
+        </p>
+      <% end %>
+
     <div class="container">
   <div class="row">
     <div class="col-md-12">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>City from</th>
-            <th>City to</th>
-            <th>Date and time when go</th>
-            <th>Date and time when arrived</th>
-            <th>Tickets count</th>
+            <th><%= link_to "City from", sort: "city_from" %></th>
+            <th><%= link_to "City to", sort: "city_to" %></th>
+            <th><%= link_to "Date and time when go", sort: "date and time when go" %></th>
+            <th><%= link_to "Date and time when arrived", sort: "date and time when arrived" %></th>
+            <th><%= link_to "Tickets count", sort: "tickets count" %></th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -43,14 +52,16 @@
         <tbody>
           <% @trips.each do |trip| %>
             <tr>
-              <td><%= trip.city_from %></td>
-              <td><%= trip.city_to %></td>
-              <td><%= trip.date_when_go %></td>
-              <td><%= trip.date_when_arrived %></td>
-              <td><%= trip.tickets_count %></td>
-              <td><%= link_to 'Show', trip %></td>
-              <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-              <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to trip.city_from, trip %></td>
+              <td><%= link_to trip.city_to, trip %></td>
+              <td><%= link_to trip.date_when_go, trip %></td>
+              <td><%= link_to trip.date_when_arrived, trip %></td>
+              <td><%= link_to trip.tickets_count, trip %></td>
+
+              <% if current_user.role == "admin" %>
+                <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+                <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

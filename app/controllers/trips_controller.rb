@@ -2,7 +2,8 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
-    @trips = Trip.all
+    @trips = Trip.order(params[:sort])
+    # @trips = Trip.search(params[:search]).order(params[:sort])
   end
 
   def show

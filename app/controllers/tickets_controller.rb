@@ -20,7 +20,6 @@ class TicketsController < ApplicationController
   def create
     trip = Trip.find params[:trip_id]
     @ticket = trip.tickets.build(ticket_params)
-    @ticket.created_at = Time.zone.now if buying?
 
     respond_to do |format|
       if @ticket.save
@@ -34,7 +33,6 @@ class TicketsController < ApplicationController
   end
 
   def update
-    @ticket.created_at = Time.zone.now if buying?
     if @ticket.update_attributes(ticket_params)
       redirect_to trip_tickets_path(@ticket.trip)
     else
@@ -59,11 +57,4 @@ class TicketsController < ApplicationController
     params.require(:ticket).permit(:number, :trip_id)
   end
 
-  def buying?
-    params[:commit] == 'Buy'
-  end
-
-  def reserved?
-    params[:commit] == 'Reserve'
-  end
 end
