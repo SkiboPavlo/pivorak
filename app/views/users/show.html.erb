@@ -1,25 +1,24 @@
 <div class="container">
   <div class="row">
-    <h2>Profile</h2>
-    <div class="col-md-4">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Role</th>
-          </tr>
-        </thead>
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class="light-well">
+        <h2 class="page-header text-center">Profile</h2>
+        <%= form_for(@user) do |f| %>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </div>
 
-        <tbody>
-          <tr>
-            <td><%= @user.email %></td>
-            <td><%= @user.role %></td>
-            <td><%= link_to 'Edit', edit_user_path, class: 'btn btn-primary btn-sm' %></td>
-          </tr>
-        </tbody>
-      </table>
+           <div class="form-group">
+            <%= f.label :role %>
+            <%= f.text_field :role %>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <br>
+      <%= link_to 'Edit', edit_user_path, class: 'btn btn-primary btn-sm' %></td>
+      <%= link_to 'Change password', edit_user_registration_path, class: 'btn btn-primary btn-sm' %>
     </div>
   </div>
 </div>
-
-

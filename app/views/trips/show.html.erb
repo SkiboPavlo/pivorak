@@ -27,9 +27,6 @@
   <label class="checkbox-inline"><input type="checkbox" value=""><%= i + 1 %></label>
 <% end %>
 <br>
-<% if current_user.role == "admin" %>
-  <%= link_to 'Edit', edit_trip_path(@trip), class: 'btn btn-default btn-sm' %> |
-<% end %>
 
 <%= link_to 'Buy ticket', new_trip_ticket_path(@trip), class: 'btn btn-default btn-sm' %> |
 <%= link_to 'All buying tickets', trip_tickets_path(@trip), class: 'btn btn-default btn-sm' %> |

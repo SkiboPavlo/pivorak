@@ -11,6 +11,10 @@
       <% @tickets.each do |ticket| %>
         <tr>
           <td><%= link_to ticket.number %></td>
+          <% if current_user.role == "admin" %>
+            <td><%= link_to 'Destroy', trip_ticket_path(ticket, ticket), method: :delete,
+                  data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

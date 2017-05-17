@@ -43,7 +43,7 @@ class TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
-    redirect_to trip_ticketss_path(@ticket.trip)
+    redirect_to trip_tickets_path(@ticket.trip)
   end
 
   private
