@@ -42,8 +42,8 @@
           <tr>
             <th><%= link_to "City from", sort: "city_from" %></th>
             <th><%= link_to "City to", sort: "city_to" %></th>
-            <th><%= link_to "Date and time when go", sort: "date_when_go" %></th>
-            <th><%= link_to "Date and time when arrived", sort: "date_when_arrived" %></th>
+            <th><%= link_to "Departure", sort: "departure" %></th>
+            <th><%= link_to "Arrival", sort: "arrival" %></th>
             <th><%= link_to "Tickets count", sort: "tickets_count" %></th>
             <th colspan="3"></th>
           </tr>
@@ -54,8 +54,8 @@
             <tr>
               <td><%= link_to trip.city_from, trip %></td>
               <td><%= link_to trip.city_to, trip %></td>
-              <td><%= link_to trip.date_when_go, trip %></td>
-              <td><%= link_to trip.date_when_arrived, trip %></td>
+              <td><%= link_to trip.departure, trip %></td>
+              <td><%= link_to trip.arrival, trip %></td>
               <td><%= link_to trip.tickets_count, trip %></td>
 
               <% if current_user.admin? %>

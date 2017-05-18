@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514224038) do
+ActiveRecord::Schema.define(version: 20170518162636) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20170514224038) do
   create_table "trips", force: :cascade do |t|
     t.string   "city_from"
     t.string   "city_to"
-    t.datetime "date_when_go"
-    t.datetime "date_when_arrived"
+    t.datetime "departure"
+    t.datetime "arrival"
     t.string   "tickets_count"
   end
 
