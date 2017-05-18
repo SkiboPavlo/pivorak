@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-9">
       <h2>Trips</h2>
-      <% if current_user.role == "admin" %>
+      <% if current_user.admin? %>
         <%= link_to 'New Trip', new_trip_path, class: 'btn btn-primary btn-sm' %>
       <br>
       <br>
@@ -42,9 +42,9 @@
           <tr>
             <th><%= link_to "City from", sort: "city_from" %></th>
             <th><%= link_to "City to", sort: "city_to" %></th>
-            <th><%= link_to "Date and time when go", sort: "date and time when go" %></th>
-            <th><%= link_to "Date and time when arrived", sort: "date and time when arrived" %></th>
-            <th><%= link_to "Tickets count", sort: "tickets count" %></th>
+            <th><%= link_to "Date and time when go", sort: "date_when_go" %></th>
+            <th><%= link_to "Date and time when arrived", sort: "date_when_arrived" %></th>
+            <th><%= link_to "Tickets count", sort: "tickets_count" %></th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -58,7 +58,7 @@
               <td><%= link_to trip.date_when_arrived, trip %></td>
               <td><%= link_to trip.tickets_count, trip %></td>
 
-              <% if current_user.role == "admin" %>
+              <% if current_user.admin? %>
                 <td><%= link_to 'Edit', edit_trip_path(trip), class: 'btn btn-default btn-sm' %></td>
                 <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' },
                                                                 class: 'btn btn-danger btn-sm' %></td>

@@ -1,0 +1,16 @@
+<%= form_for [trip, ticket] do |f| %>
+
+  <div class="form-group">
+    <% trip.tickets_count.to_i.times do |i| %>
+      <%= f.label i + 1 %>
+      <%= f.radio_button :number, i + 1 %>
+    <% end %>
+  </div>
+
+  <% if current_user.buyer? %>
+    <div class="actions">
+      <%= f.submit "Buy Ticket"%>
+    </div>
+  <% end %>
+  <br>
+<% end %>

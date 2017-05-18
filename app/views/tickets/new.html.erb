@@ -3,17 +3,8 @@
     <div class="col-sm-4 col-sm-offset-4">
       <div class="light-well">
         <h2 class="page-header text-center">New Ticket</h2>
-        <%= form_for [@ticket.trip, @ticket] do |f| %>
-          <div class="form-group">
-            <%= f.label :number %>
-            <%= f.text_field :number, class: "form-control" %>
-          </div>
 
-          <div class="actions">
-            <%= f.submit "Buy"%>
-          </div>
-          <br>
-        <% end %>
+        <%= render 'form', ticket: @ticket %>
         <%= link_to 'Back', :back, class: 'btn btn-default btn-sm' %>
       </div>
     </div>

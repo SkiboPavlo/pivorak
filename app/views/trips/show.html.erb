@@ -23,11 +23,7 @@
   <%= @trip.tickets_count %>
 </p>
 
-<% @trip.tickets_count.to_i.times do |i| %>
-  <label class="checkbox-inline"><input type="checkbox" value=""><%= i + 1 %></label>
-<% end %>
-<br>
+<%= render 'tickets/form', ticket: Ticket.new, trip: @trip %>
 
-<%= link_to 'Buy ticket', new_trip_ticket_path(@trip), class: 'btn btn-default btn-sm' %> |
 <%= link_to 'All buying tickets', trip_tickets_path(@trip), class: 'btn btn-default btn-sm' %> |
 <%= link_to 'Back', trips_path, class: 'btn btn-default btn-sm' %>

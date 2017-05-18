@@ -12,14 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
 //= require select2
-//= require bootstrap-datepicker
+//= require moment
+//= require bootstrap-datetimepicker
+//= require_tree .
 
 $(document).ready(function() {
   $("#city_from").select2();
   $("#city_to").select2();
-  $('.datepicker').datepicker();
 });
-
+$(function () {
+  $('.datepicker').datetimepicker();
+});

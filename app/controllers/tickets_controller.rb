@@ -56,5 +56,4 @@ class TicketsController < ApplicationController
   def ticket_params
     params.require(:ticket).permit(:number, :trip_id)
   end
-
 end

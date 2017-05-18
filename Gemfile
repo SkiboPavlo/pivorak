@@ -15,11 +15,11 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
-gem 'cancancan'
 gem 'rolify'
 gem 'bootstrap-sass'
 gem "select2-rails" #for select cities
-gem 'bootstrap-datepicker-rails' #for choosing dates
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47' #for select date
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
