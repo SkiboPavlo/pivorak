@@ -3,9 +3,6 @@
 Ruby version 2.2.4
 Rails version 5.0.2
 
-###  [Pivorak](http://heroku.com) - on heroku
-
-
 # Description
 
 The name of the program - #Pivorak.
