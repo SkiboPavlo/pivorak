@@ -8,15 +8,13 @@
       <br>
       <% end %>
 
-      <form class="form-horizontal">
-        <div class="col-md-5">
-        <div class="input-group">
-            <%= form_tag trips_path, method: 'get' do %>
-              <%= text_field :by_city, params[:by_city], class: "form-control", placeholder: "City" %>
-              <%= text_field :by_date, params[:by_date], class: "form-control", placeholder: "Date" %>
-              <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
-            <% end %>
-          </div>
+      <form class="form-inline">
+        <div class="form-group">
+          <%= form_tag trips_path, method: 'get' do %>
+            <%= text_field :by_city, params[:by_city], class: "form-control", placeholder: "City" %>
+            <%= text_field :by_date, params[:by_date], class: "form-control", placeholder: "Date" %>
+            <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+          <% end %>
         </div>
       </form>
 
