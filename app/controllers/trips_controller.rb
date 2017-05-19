@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
-    @trips = Trip.search(params[:search]).order(params[:sort])
+    @trips = Trip.search(params[:by_city], params[:by_date]).order(params[:sort])
   end
 
   def show
@@ -20,6 +20,9 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.save
+        @trip.tickets_count.to_i.times do |i|
+          Ticket.create({trip_id: @trip.id, number: i+1})
+        end
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
