@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  validates :city_from, :city_to, :tickets_count, :departure, :arrival,  presence: true
+  validates :city_from, :city_to, :tickets_count, :departure, :arrival, :tickets_price,  presence: true
   has_many :tickets, dependent: :destroy
 
   def self.search(by_city, by_date)

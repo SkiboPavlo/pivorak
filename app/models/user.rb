@@ -8,8 +8,4 @@ class User < ApplicationRecord
   def admin?
     role == "admin"
   end
-
-  def buyer?
-    role == "buyer"
-  end
 end
