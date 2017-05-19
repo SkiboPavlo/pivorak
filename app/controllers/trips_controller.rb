@@ -17,11 +17,10 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-
     respond_to do |format|
       if @trip.save
         @trip.tickets_count.to_i.times do |i|
-          Ticket.create({trip_id: @trip.id, number: i+1})
+          Ticket.create({trip_id: @trip.id, number: i+1, price: @trip.tickets_price, user_id: current_user.id})
         end
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
@@ -35,6 +34,9 @@ class TripsController < ApplicationController
   def update
     respond_to do |format|
       if @trip.update(trip_params)
+        @trip.tickets.each do |ticket|
+          ticket.update_attributes(price: @trip.tickets_price)
+        end
         format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
         format.json { render :show, status: :ok, location: @trip }
       else
@@ -58,7 +60,7 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:city_from, :city_to, :departure, :arrival, :tickets_count)
+    params.require(:trip).permit(:city_from, :city_to, :departure, :arrival, :tickets_count, :tickets_price)
   end
 end
 

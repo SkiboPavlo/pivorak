@@ -27,9 +27,12 @@
           <%= @trip.tickets_count %>
         </p>
 
-        <%= render 'tickets/form', ticket: Ticket.new, trip: @trip %>
+        <p>
+          <strong>Ticket price:</strong>
+          <%= @trip.tickets_price %>
+        </p>
 
-        <%= link_to 'All buying tickets', trip_tickets_path(@trip), class: 'btn btn-default btn-sm' %> |
+        <%= link_to 'All tickets', trip_tickets_path(@trip), class: 'btn btn-default btn-sm' %> |
         <%= link_to 'Back', trips_path, class: 'btn btn-default btn-sm' %>
       </div>
     </div>

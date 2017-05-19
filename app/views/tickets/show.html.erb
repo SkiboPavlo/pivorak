@@ -1,6 +1,39 @@
-<p>
-  <strong>Number:</strong>
-  <%= @ticket.number %>
-</p>
+<div class="container">
+  <h2>Ticket</h2>
+  <p>
+    <strong>From:</strong>
+    <%= @ticket.trip.city_from %>
+  </p>
 
-<%= link_to 'Back', :back, class: 'btn btn-default btn-sm' %>
+  <p>
+    <strong>To:</strong>
+    <%= @ticket.trip.city_to %>
+  </p>
+
+  <p>
+    <strong>Departure:</strong>
+    <%= @ticket.trip.departure %>
+  </p>
+
+  <p>
+    <strong>Arrival:</strong>
+    <%= @ticket.trip.arrival %>
+  </p>
+
+  <p>
+    <strong>Number:</strong>
+    <%= @ticket.number %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @ticket.status %>
+  </p>
+
+  <p>
+    <strong>Number:</strong>
+    <%= @ticket.price %>
+  </p>
+
+  <%= link_to 'Back', :back, class: 'btn btn-default btn-sm' %>
+</div>

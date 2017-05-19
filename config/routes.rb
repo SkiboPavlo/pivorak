@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"}
   resources :users
   resources :trips do
-    resources :tickets
+    resources :tickets do
+      get 'buy', on: :member
+      get 'reserve', on: :member
+    end
   end
 end
